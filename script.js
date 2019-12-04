@@ -1,4 +1,5 @@
 const CATALOG_ID = 'Catalog-1';
+const ADS_REWARD_CURRENCY_ID = 'GO';
 
 handlers.buyItem = function(args, context) {
     let result = {};
@@ -41,6 +42,16 @@ handlers.buyItemWithCurrencyId = function(args, context) {
     }
     return result;
 };
+
+handlers.saveAdsReward = function(args, context) {
+    // TODO: grant item to users
+    const currencyAmount = getRandomInt(100, 1000);
+    return server.AddUserVirtualCurrency({
+        PlayFabId: currentPlayerId,
+        VirtualCurrency: ADS_REWARD_CURRENCY_ID,
+        Amount: currencyAmount
+    });
+}
 
 function buyItemWithAlternativePriceOptionWithId(result, item, currencyId) {
     const virtualCurrencyPrices = item.VirtualCurrencyPrices;
@@ -134,4 +145,10 @@ function getVirtualCurrency(currencyId) {
         PlayFabId: currentPlayerId
     });
     return parseInt(inventory.VirtualCurrency[currencyId]);
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
