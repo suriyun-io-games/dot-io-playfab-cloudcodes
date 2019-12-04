@@ -120,9 +120,9 @@ function findItemFromCatalog(itemId) {
         CatalogVersion: CATALOG_ID
     });
     // Find item by id
-    for (let i = 0; i < catalog.length; ++i) {
-        let item = catalog[i];
-        if (item.ItemId == itemId) {
+    for (let i = 0; i < catalog.Catalog.length; ++i) {
+        const item = catalog.Catalog[i];
+        if (item.ItemId === itemId) {
             return item;
         }
     }
