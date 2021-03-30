@@ -66,7 +66,8 @@ function buyItemWithAlternativePriceOptionWithId(result, item, currencyId) {
         });
         server.GrantItemsToUser({
             PlayFabId: currentPlayerId,
-            ItemIds: [item.ItemId]
+            ItemIds: [item.ItemId],
+            CatalogVersion: CATALOG_ID
         });
         result.ItemId = [item.ItemId];
         return result;
@@ -89,7 +90,8 @@ function buyItemWithAlternativePriceOption(result, item) {
             });
             server.GrantItemsToUser({
                 PlayFabId: currentPlayerId,
-                ItemIds: [item.ItemId]
+                ItemIds: [item.ItemId],
+                CatalogVersion: CATALOG_ID
             });
             result.ItemId = [item.ItemId];
             return result;
@@ -120,7 +122,8 @@ function buyItemWithRequisitePriceOption(result, item) {
     }
     server.GrantItemsToUser({
         PlayFabId: currentPlayerId,
-        ItemIds: [item.ItemId]
+        ItemIds: [item.ItemId],
+        CatalogVersion: CATALOG_ID
     });
     result.ItemId = [item.ItemId];
     return result;
