@@ -12,7 +12,7 @@ handlers.buyItem = function(args, context) {
             result = buyItemWithAlternativePriceOption(result, item);
         } else {
             const parsedCustomData = JSON.parse(item.CustomData);
-            if (parsedCustomData.PricesOption === 1) {
+            if (parsedCustomData.PricesOption == 1) {
                 result = buyItemWithRequisitePriceOption(result, item);
             } else {
                 result = buyItemWithAlternativePriceOption(result, item);
@@ -33,7 +33,7 @@ handlers.buyItemWithCurrencyId = function(args, context) {
             result = buyItemWithAlternativePriceOptionWithId(result, item, args.currencyId);
         } else {
             const parsedCustomData = JSON.parse(item.CustomData);
-            if (parsedCustomData.PricesOption !== 1) {
+            if (parsedCustomData.PricesOption != 1) {
                 result = buyItemWithAlternativePriceOptionWithId(result, item, args.currencyId);
             } else {
                 result.Error = 'Invalid price option';
